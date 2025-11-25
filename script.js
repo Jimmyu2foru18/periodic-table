@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.forEach(element => {
             const elementTile = document.createElement('div');
             elementTile.classList.add('element-tile');
-            elementTile.classList.add(element.category.replace(/\s/g, '-')); // Add category for styling
+            const cpkHex = element['cpk-hex'];
+            elementTile.style.backgroundColor = cpkHex ? '#' + cpkHex : '#e0e0e0'; // Fallback to light grey if cpk-hex is missing or invalid
             elementTile.style.gridColumn = element.xpos;
             elementTile.style.gridRow = element.ypos;
 
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showElementDetail(element) {
+        console.log('showElementDetail called for:', element.name);
         // Move periodic table to the bottom
         periodicTableContainer.style.transform = 'translateY(100vh)';
 
@@ -64,10 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function hideElementDetail() {
+        console.log('hideElementDetail called');
         elementDetailView.classList.remove('active');
         // Move periodic table back to original position
         periodicTableContainer.style.transform = 'translateY(0)';
     }
 
-    renderPeriodicTable();
+
 });

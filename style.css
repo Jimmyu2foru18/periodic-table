@@ -6,19 +6,20 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+/* Container */
 #periodic-table-container {
     display: grid;
     grid-template-columns: repeat(18, 1fr); /* 18 columns for the periodic table */
     gap: 2px;
     width: 100%;
-    max-width: 1200px; /* Adjust as needed */
+    max-width: 900px; /* Adjust as needed */
     margin: 20px auto;
     transition: transform 0.5s ease-in-out; /* Smooth transition for moving the table */
 }
 
+/* Element tiles */
 .element-tile {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    border: 1px solid #999;
     padding: 5px;
     text-align: center;
     cursor: pointer;
@@ -54,7 +55,7 @@ body {
     font-size: 0.6em;
 }
 
-/* Styles for the enlarged element view */
+/* Enlarged element view */
 #element-detail-view {
     position: fixed;
     top: 0;
@@ -89,7 +90,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 200px; /* Adjust size as needed */
+    width: 200px;
     height: 200px;
 }
 
@@ -110,6 +111,7 @@ body {
     font-size: 1em;
 }
 
+/* Sidebar */
 .info-sidebar {
     background-color: #333;
     color: #fff;
@@ -149,36 +151,32 @@ body {
 
 /* Category-specific colors */
 :root {
-    --color-diatomic-nonmetal: #ffffff;
     --color-noble-gas: #d9ffff;
     --color-alkali-metal: #cc80ff;
-    --color-alkaline-earth-metal: #c2ff00;
-    --color-metalloid: #ffb5b5;
-    --color-polyatomic-nonmetal: #909090;
-    /* Add more categories as needed */
+    --color-alkaline-earth-metal: #ffdb80;
+    --color-lanthanide: #ffbfd9;
+    --color-actinide: #ff99cc;
+    --color-transition-metal: #ffc0c0;
+    --color-post-transition-metal: #cccccc;
+    --color-metalloid: #cccc99;
+    --color-other-nonmetal: #a0ffa0;
+    --color-halogen: #ffff99;
+    --color-diatomic-nonmetal: #a0ffa0;
+    --color-polyatomic-nonmetal: #a0ffa0;
+    --color-unknown-properties: #e0e0e0;
 }
 
-.element-tile.diatomic-nonmetal {
-    background-color: var(--color-diatomic-nonmetal);
-}
-
-.element-tile.noble-gas {
-    background-color: var(--color-noble-gas);
-}
-
-.element-tile.alkali-metal {
-    background-color: var(--color-alkali-metal);
-}
-
-.element-tile.alkaline-earth-metal {
-    background-color: var(--color-alkaline-earth-metal);
-}
-
-.element-tile.metalloid {
-    background-color: var(--color-metalloid);
-}
-
-.element-tile.polyatomic-nonmetal {
-    background-color: var(--color-polyatomic-nonmetal);
-}
-}
+/* Category classes */
+.element-tile.noble-gas { background-color: var(--color-noble-gas) !important; }
+.element-tile.alkali-metal { background-color: var(--color-alkali-metal) !important; }
+.element-tile.alkaline-earth-metal { background-color: var(--color-alkaline-earth-metal) !important; }
+.element-tile.lanthanide { background-color: var(--color-lanthanide) !important; }
+.element-tile.actinide { background-color: var(--color-actinide) !important; }
+.element-tile.transition-metal { background-color: var(--color-transition-metal) !important; }
+.element-tile.post-transition-metal { background-color: var(--color-post-transition-metal) !important; }
+.element-tile.metalloid { background-color: var(--color-metalloid) !important; }
+.element-tile.other-nonmetal { background-color: var(--color-other-nonmetal) !important; }
+.element-tile.halogen { background-color: var(--color-halogen) !important; }
+.element-tile.diatomic-nonmetal { background-color: var(--color-diatomic-nonmetal) !important; }
+.element-tile.polyatomic-nonmetal { background-color: var(--color-polyatomic-nonmetal) !important; }
+.element-tile.unknown-properties { background-color: var(--color-unknown-properties) !important; }
