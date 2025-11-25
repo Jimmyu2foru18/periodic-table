@@ -1,0 +1,184 @@
+/* Basic styles for the periodic table */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+#periodic-table-container {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr); /* 18 columns for the periodic table */
+    gap: 2px;
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 20px auto;
+    transition: transform 0.5s ease-in-out; /* Smooth transition for moving the table */
+}
+
+.element-tile {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    aspect-ratio: 1 / 1; /* Make tiles square */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+}
+
+.element-tile:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.element-symbol {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.element-name {
+    font-size: 0.7em;
+}
+
+.element-atomic-number {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 0.6em;
+}
+
+/* Styles for the enlarged element view */
+#element-detail-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    z-index: 100;
+}
+
+#element-detail-view.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.enlarged-element {
+    background-color: #fff;
+    border: 2px solid #333;
+    padding: 20px;
+    text-align: center;
+    transform: scale(0.5);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 200px; /* Adjust size as needed */
+    height: 200px;
+}
+
+#element-detail-view.active .enlarged-element {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.enlarged-element .element-symbol {
+    font-size: 4em;
+}
+
+.enlarged-element .element-name {
+    font-size: 1.2em;
+}
+
+.enlarged-element .element-atomic-number {
+    font-size: 1em;
+}
+
+.info-sidebar {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    width: 300px; /* Adjust width as needed */
+    height: 100%;
+    position: absolute;
+    right: -300px; /* Start off-screen */
+    top: 0;
+    transition: right 0.5s ease-in-out;
+    overflow-y: auto;
+}
+
+#element-detail-view.active .info-sidebar {
+    right: 0; /* Slide in */
+}
+
+.info-sidebar h3 {
+    margin-top: 0;
+    color: #61dafb; /* React blue */
+}
+
+.info-sidebar p {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    color: #fff;
+    cursor: pointer;
+    z-index: 101;
+}
+
+/* Category-specific colors */
+:root {
+    --color-diatomic-nonmetal: #ffffff;
+    --color-noble-gas: #d9ffff;
+    --color-alkali-metal: #cc80ff;
+    --color-alkaline-earth-metal: #c2ff00;
+    --color-metalloid: #ffb5b5;
+    --color-polyatomic-nonmetal: #909090;
+    /* Add more categories as needed */
+}
+
+.element-tile.diatomic-nonmetal {
+    background-color: var(--color-diatomic-nonmetal);
+}
+
+.element-tile.noble-gas {
+    background-color: var(--color-noble-gas);
+}
+
+.element-tile.alkali-metal {
+    background-color: var(--color-alkali-metal);
+}
+
+.element-tile.alkaline-earth-metal {
+    background-color: var(--color-alkaline-earth-metal);
+}
+
+.element-tile.metalloid {
+    background-color: var(--color-metalloid);
+}
+
+.element-tile.polyatomic-nonmetal {
+    background-color: var(--color-polyatomic-nonmetal);
+}
+}
