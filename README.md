@@ -15,6 +15,8 @@ To run this project locally, follow these steps:
 
     ```bash
     git clone https://github.com/Jimmyu2foru18/periodic-table-webapp.git
+    ```
+    ```bash
     cd periodic-table-webapp
     ```
 
